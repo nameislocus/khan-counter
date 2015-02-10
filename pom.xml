@@ -129,52 +129,6 @@
                     <downloadSources>true</downloadSources>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <id>default-cli</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <property file="build.properties"/>
-                                <mkdir dir="resources/modules.ext/com/opennaru/khan/counter/main"/>
-
-                                <copy todir="target/dist/modules.ext">
-                                    <fileset dir="resources/modules.ext"/>
-                                </copy>
-
-                                <copy file="target/khan-counter-1.0.0.jar"
-                                      todir="target/dist/modules.ext/com/opennaru/khan/counter/main"/>
-
-                                <copy file="target/khan-counter-1.0.0.jar"
-                                      todir="target/dist/lib"/>
-
-                                <copy todir="target/dist/config">
-                                    <fileset dir="resources/config"/>
-                                </copy>
-
-                                <copy file="docs/readme.txt"
-                                      todir="target/dist"/>
-
-                                <zip destfile="target/khan-counter-1.0.0.zip" basedir="target/dist"/>
-
-                                <copy todir="${jboss.modules}/">
-                                    <fileset dir="target/dist/modules.ext"/>
-                                </copy>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-
-
-            </plugin>
         </plugins>
     </build>
 
